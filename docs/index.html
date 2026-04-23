@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="./favicon.ico" />
+    <!-- Preload is necessary because we show these images when we disconnect from the server,
+    but at that point we cannot load these images from the server -->
+    <link rel="preload" href="./assets/gradient-yHQUC_QB.png" as="image" />
+    <link rel="preload" href="./assets/noise-60BoTA8O.png" as="image" />
+    <!-- Preload the fonts -->
+    <link rel="preload" href="./assets/Lora-VariableFont_wght-B2ootaw-.ttf" as="font" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/PTSans-Regular-CxL0S8W7.ttf" as="font" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/PTSans-Bold-D9fedIX3.ttf" as="font" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/FiraMono-Regular-BTCkDNvf.ttf" as="font" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/FiraMono-Medium-DU3aDxX5.ttf" as="font" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/FiraMono-Bold-CLVRCuM9.ttf" as="font" crossorigin="anonymous" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="a marimo app" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+    <link rel="manifest" href="./manifest.json" />
+
+    <script data-marimo="true">
+      function __resizeIframe(obj) {
+        const scrollbarHeight = 20; // Max between windows, mac, and linux
+
+        function setHeight() {
+          // Guard against race condition where iframe isn't ready
+          if (!obj.contentWindow?.document?.documentElement) {
+            return;
+          }
+          const element = obj.contentWindow.document.documentElement;
+          // If there is no vertical scrollbar, we don't need to resize the iframe
+          if (element.scrollHeight === element.clientHeight) {
+            return;
+          }
+
+          // Create a new height that includes the scrollbar height if it's visible
+          const hasHorizontalScrollbar = element.scrollWidth > element.clientWidth;
+          const newHeight = element.scrollHeight + (hasHorizontalScrollbar ? scrollbarHeight : 0);
+
+          // Only update the height if it's different from the current height
+          if (obj.style.height !== `${newHeight}px`) {
+            obj.style.height = `${newHeight}px`;
+          }
+        }
+
+        // Resize the iframe to the height of the content and bottom scrollbar height
+        setHeight();
+
+        // Resize the iframe when the content changes
+        const resizeObserver = new ResizeObserver((_entries) => {
+          setHeight();
+        });
+        // Only observe if iframe content is ready
+        if (obj.contentWindow?.document?.body) {
+          resizeObserver.observe(obj.contentWindow.document.body);
+        }
+      }
+    </script>
+    <marimo-filename hidden>notebook.py</marimo-filename>
+    <!-- TODO(Trevor): Legacy, required by VS Code plugin. Remove when plugin is updated (see marimo/server/_templates/template.py) -->
+    <marimo-version data-version="{{ version }}" hidden></marimo-version>
+    <marimo-user-config data-config="{{ user_config }}" hidden></marimo-user-config>
+    <marimo-server-token data-token="{{ server_token }}" hidden></marimo-server-token>
+    <!-- /TODO -->
+    <title>starter app</title>
+    <script type="module" crossorigin src="./assets/index-DVgeLSg0.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/preload-helper-D2MJg03u.js">
+    <link rel="modulepreload" crossorigin href="./assets/clsx-D8GwTfvk.js">
+    <link rel="modulepreload" crossorigin href="./assets/cn-BKtXLv3a.js">
+    <link rel="modulepreload" crossorigin href="./assets/chunk-LvLJmgfZ.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-Bj1aDYRI.js">
+    <link rel="modulepreload" crossorigin href="./assets/compiler-runtime-B3qBwwSJ.js">
+    <link rel="modulepreload" crossorigin href="./assets/jsx-runtime-ZmTK25f3.js">
+    <link rel="modulepreload" crossorigin href="./assets/badge-DX6CQ6PA.js">
+    <link rel="modulepreload" crossorigin href="./assets/hotkeys-BHHWjLlp.js">
+    <link rel="modulepreload" crossorigin href="./assets/useEventListener-Cb-RVVEn.js">
+    <link rel="modulepreload" crossorigin href="./assets/button-CZ3Cs4qb.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-dom-CSu739Rf.js">
+    <link rel="modulepreload" crossorigin href="./assets/Combination-BAEdC-rz.js">
+    <link rel="modulepreload" crossorigin href="./assets/menu-items-BMjcEb2j.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-DwV58Fb1.js">
+    <link rel="modulepreload" crossorigin href="./assets/createLucideIcon-BCdY6lG5.js">
+    <link rel="modulepreload" crossorigin href="./assets/check-Dr3SxUsb.js">
+    <link rel="modulepreload" crossorigin href="./assets/x-ZP5cObgf.js">
+    <link rel="modulepreload" crossorigin href="./assets/select-BVdzZKAh.js">
+    <link rel="modulepreload" crossorigin href="./assets/tooltip-CMQz28hC.js">
+    <link rel="modulepreload" crossorigin href="./assets/use-toast-BDYuj3zG.js">
+    <link rel="modulepreload" crossorigin href="./assets/_Uint8Array-BGESiCQL.js">
+    <link rel="modulepreload" crossorigin href="./assets/_baseIsEqual-B9N9Mw_N.js">
+    <link rel="modulepreload" crossorigin href="./assets/useEvent-BhXAndur.js">
+    <link rel="modulepreload" crossorigin href="./assets/invariant-CAG_dYON.js">
+    <link rel="modulepreload" crossorigin href="./assets/_baseFor-Duhs3RiJ.js">
+    <link rel="modulepreload" crossorigin href="./assets/merge-BBX6ug-N.js">
+    <link rel="modulepreload" crossorigin href="./assets/zod-H_cgTO0M.js">
+    <link rel="modulepreload" crossorigin href="./assets/utils-YqBXNpsM.js">
+    <link rel="modulepreload" crossorigin href="./assets/Deferred-DxQeE5uh.js">
+    <link rel="modulepreload" crossorigin href="./assets/uuid-DXdzqzcr.js">
+    <link rel="modulepreload" crossorigin href="./assets/DeferredRequestRegistry-CMf25YiV.js">
+    <link rel="modulepreload" crossorigin href="./assets/constants-B6Cb__3x.js">
+    <link rel="modulepreload" crossorigin href="./assets/session-BOFn9QrD.js">
+    <link rel="modulepreload" crossorigin href="./assets/config-Q0O7_stz.js">
+    <link rel="modulepreload" crossorigin href="./assets/requests-B4FYHTZl.js">
+    <link rel="modulepreload" crossorigin href="./assets/isSymbol-BGkTcW3U.js">
+    <link rel="modulepreload" crossorigin href="./assets/toString-DlRqgfqz.js">
+    <link rel="modulepreload" crossorigin href="./assets/_hasUnicode-CWqKLxBC.js">
+    <link rel="modulepreload" crossorigin href="./assets/assertNever-CBU83Y6o.js">
+    <link rel="modulepreload" crossorigin href="./assets/_arrayReduce-TT0iOGKY.js">
+    <link rel="modulepreload" crossorigin href="./assets/useLifecycle-ClI_npeg.js">
+    <link rel="modulepreload" crossorigin href="./assets/useNonce-CS26E0hA.js">
+    <link rel="modulepreload" crossorigin href="./assets/useTheme-DQozhcp1.js">
+    <link rel="modulepreload" crossorigin href="./assets/once-Bul8mtFs.js">
+    <link rel="modulepreload" crossorigin href="./assets/capabilities-MM7JYRxj.js">
+    <link rel="modulepreload" crossorigin href="./assets/createReducer-B3rBsy4P.js">
+    <link rel="modulepreload" crossorigin href="./assets/paths-BzSgteR-.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-DxWb3aMV.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-NOntBqny.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-CF9gSfGe.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-PzrizfuL.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-BNkRH34W.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-LUpffRIq.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-MyTWYTLd.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-maX8rbyb.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-Bt3KRZho.js">
+    <link rel="modulepreload" crossorigin href="./assets/stex-jWatZkll.js">
+    <link rel="modulepreload" crossorigin href="./assets/toDate-DETS9bBd.js">
+    <link rel="modulepreload" crossorigin href="./assets/cjs-CH5Rj0g8.js">
+    <link rel="modulepreload" crossorigin href="./assets/_baseProperty-NKyJO2oh.js">
+    <link rel="modulepreload" crossorigin href="./assets/now-6sUe0ZdD.js">
+    <link rel="modulepreload" crossorigin href="./assets/debounce-B3mjKxHe.js">
+    <link rel="modulepreload" crossorigin href="./assets/toInteger-CDcO32Gx.js">
+    <link rel="modulepreload" crossorigin href="./assets/database-zap-k4ePIFAU.js">
+    <link rel="modulepreload" crossorigin href="./assets/main-U5Goe76G.js">
+    <link rel="modulepreload" crossorigin href="./assets/cells-Botr-aL3.js">
+    <link rel="modulepreload" crossorigin href="./assets/spinner-DA8-7wQv.js">
+    <link rel="modulepreload" crossorigin href="./assets/chevron-right--18M_6o9.js">
+    <link rel="modulepreload" crossorigin href="./assets/dropdown-menu-ldcmQvIV.js">
+    <link rel="modulepreload" crossorigin href="./assets/kbd-Cm6Ba9qg.js">
+    <link rel="modulepreload" crossorigin href="./assets/renderShortcut-BckyRbYt.js">
+    <link rel="modulepreload" crossorigin href="./assets/multi-map-DxdLNTBd.js">
+    <link rel="modulepreload" crossorigin href="./assets/alert-BOoN6gJ1.js">
+    <link rel="modulepreload" crossorigin href="./assets/card-OlSjYhmd.js">
+    <link rel="modulepreload" crossorigin href="./assets/alert-dialog-BW4srmS0.js">
+    <link rel="modulepreload" crossorigin href="./assets/dialog-eb-NieZw.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-CDXJRSCj.js">
+    <link rel="modulepreload" crossorigin href="./assets/label-E64zk6_7.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDebounce-7iEVSqwM.js">
+    <link rel="modulepreload" crossorigin href="./assets/textarea-BmPX99zz.js">
+    <link rel="modulepreload" crossorigin href="./assets/numbers-D7O23mOZ.js">
+    <link rel="modulepreload" crossorigin href="./assets/SSRProvider-BIDQNg9Q.js">
+    <link rel="modulepreload" crossorigin href="./assets/context-BfYAMNLF.js">
+    <link rel="modulepreload" crossorigin href="./assets/useNumberFormatter-Db6Vjve5.js">
+    <link rel="modulepreload" crossorigin href="./assets/usePress-C__vuri5.js">
+    <link rel="modulepreload" crossorigin href="./assets/input-DUrq2DiR.js">
+    <link rel="modulepreload" crossorigin href="./assets/links-7AQBmdyV.js">
+    <link rel="modulepreload" crossorigin href="./assets/popover-CH1FzjxU.js">
+    <link rel="modulepreload" crossorigin href="./assets/switch-Vbll2pdD.js">
+    <link rel="modulepreload" crossorigin href="./assets/table-DScsXgJW.js">
+    <link rel="modulepreload" crossorigin href="./assets/mode-C1hn9AVp.js">
+    <link rel="modulepreload" crossorigin href="./assets/useAsyncData-BMGLSTg8.js">
+    <link rel="modulepreload" crossorigin href="./assets/errors-TZBmrJmc.js">
+    <link rel="modulepreload" crossorigin href="./assets/error-banner-B9ts0mNl.js">
+    <link rel="modulepreload" crossorigin href="./assets/copy-DHrHayPa.js">
+    <link rel="modulepreload" crossorigin href="./assets/memoize-BCOZVFBt.js">
+    <link rel="modulepreload" crossorigin href="./assets/get-6uJrSKbw.js">
+    <link rel="modulepreload" crossorigin href="./assets/capitalize-CmNnkG9y.js">
+    <link rel="modulepreload" crossorigin href="./assets/copy-D-8y6iMN.js">
+    <link rel="modulepreload" crossorigin href="./assets/plus-B7DF33lD.js">
+    <link rel="modulepreload" crossorigin href="./assets/refresh-cw-Dx8TEWFP.js">
+    <link rel="modulepreload" crossorigin href="./assets/trash-2-DDsWrxuJ.js">
+    <link rel="modulepreload" crossorigin href="./assets/triangle-alert-CebQ7XwA.js">
+    <link rel="modulepreload" crossorigin href="./assets/ai-model-dropdown-BMv5J-EA.js">
+    <link rel="modulepreload" crossorigin href="./assets/defaultLocale-JieDVWC_.js">
+    <link rel="modulepreload" crossorigin href="./assets/precisionRound-CU2C3Vxx.js">
+    <link rel="modulepreload" crossorigin href="./assets/defaultLocale-BLne0bXb.js">
+    <link rel="modulepreload" crossorigin href="./assets/vega-loader.browser-DXARUlxo.js">
+    <link rel="modulepreload" crossorigin href="./assets/tooltip-DxKBXCGp.js">
+    <link rel="modulepreload" crossorigin href="./assets/ErrorBoundary-B9Ifj8Jf.js">
+    <link rel="modulepreload" crossorigin href="./assets/useInstallPackage-D4fX0Ee_.js">
+    <link rel="modulepreload" crossorigin href="./assets/ImperativeModal-BNN1HA7x.js">
+    <link rel="modulepreload" crossorigin href="./assets/cell-link-DvW8RUk0.js">
+    <link rel="modulepreload" crossorigin href="./assets/datasource-acoDY9Ku.js">
+    <link rel="modulepreload" crossorigin href="./assets/state-AxOl5_1Q.js">
+    <link rel="modulepreload" crossorigin href="./assets/MarimoErrorOutput-a6bY4dzO.js">
+    <link rel="modulepreload" crossorigin href="./assets/copy-icon-v8ME_JKB.js">
+    <link rel="modulepreload" crossorigin href="./assets/html-to-image-CVa2JapI.js">
+    <link rel="modulepreload" crossorigin href="./assets/focus--DQRDy9D.js">
+    <link rel="modulepreload" crossorigin href="./assets/LazyAnyLanguageCodeMirror-BTO7DS3k.js">
+    <link rel="modulepreload" crossorigin href="./assets/chunk-5FQGJX7Z-DPlx2kjA.js">
+    <link rel="modulepreload" crossorigin href="./assets/katex-CDLTCvjQ.js">
+    <link rel="modulepreload" crossorigin href="./assets/markdown-renderer-DqiLSa6X.js">
+    <link rel="modulepreload" crossorigin href="./assets/command-BMidGaii.js">
+    <link rel="modulepreload" crossorigin href="./assets/download-COpfLoar.js">
+    <link rel="modulepreload" crossorigin href="./assets/useRunCells-DrrCdLgV.js">
+    <link rel="modulepreload" crossorigin href="./assets/purify.es-DZrAQFIu.js">
+    <link rel="modulepreload" crossorigin href="./assets/RenderHTML-CG3x4AfR.js">
+    <link rel="modulepreload" crossorigin href="./assets/useIframeCapabilities-B_pQb20b.js">
+    <link rel="modulepreload" crossorigin href="./assets/formats-CobRswjh.js">
+    <link rel="modulepreload" crossorigin href="./assets/en-US-CCVfmA-q.js">
+    <link rel="modulepreload" crossorigin href="./assets/isValid-DDt9wNjK.js">
+    <link rel="modulepreload" crossorigin href="./assets/dates-CrvjILe3.js">
+    <link rel="modulepreload" crossorigin href="./assets/maps-D2_Mq1pZ.js">
+    <link rel="modulepreload" crossorigin href="./assets/extends-BiFDv3jB.js">
+    <link rel="modulepreload" crossorigin href="./assets/emotion-is-prop-valid.esm-C59xfSYt.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDateFormatter-CqhdUl2n.js">
+    <link rel="modulepreload" crossorigin href="./assets/range-D2UKkEg-.js">
+    <link rel="modulepreload" crossorigin href="./assets/table-CfDbAm78.js">
+    <link rel="modulepreload" crossorigin href="./assets/JsonOutput-ChH_9MPt.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDeleteCell-CRLMdzIa.js">
+    <link rel="modulepreload" crossorigin href="./assets/icons-CCHmxi8d.js">
+    <link rel="modulepreload" crossorigin href="./assets/process-output-uzyiTMlC.js">
+    <link rel="modulepreload" crossorigin href="./assets/blob-D-eV0cU3.js">
+    <link rel="modulepreload" crossorigin href="./assets/objectWithoutPropertiesLoose-DfWeGRFv.js">
+    <link rel="modulepreload" crossorigin href="./assets/esm-BqiVbELQ.js">
+    <link rel="modulepreload" crossorigin href="./assets/file-Ch78NKWp.js">
+    <link rel="modulepreload" crossorigin href="./assets/play-GLWQQs7F.js">
+    <link rel="modulepreload" crossorigin href="./assets/add-cell-with-ai-C09q01JF.js">
+    <link rel="modulepreload" crossorigin href="./assets/isEmpty-CgX_-6Mt.js">
+    <link rel="modulepreload" crossorigin href="./assets/bot-message-square-B2ThzDUZ.js">
+    <link rel="modulepreload" crossorigin href="./assets/chat-display-DLmJWehR.js">
+    <link rel="modulepreload" crossorigin href="./assets/chart-no-axes-column-qvVRjhv1.js">
+    <link rel="modulepreload" crossorigin href="./assets/square-function-B6mgCeFJ.js">
+    <link rel="modulepreload" crossorigin href="./assets/spec-Ch0xnJY4.js">
+    <link rel="modulepreload" crossorigin href="./assets/column-preview-BZevmZKp.js">
+    <link rel="modulepreload" crossorigin href="./assets/toggle-zVW4FXNz.js">
+    <link rel="modulepreload" crossorigin href="./assets/globals-DVVNoYwt.js">
+    <link rel="modulepreload" crossorigin href="./assets/share-ipf2hrOh.js">
+    <link rel="modulepreload" crossorigin href="./assets/_baseSet-5Rdwpmr3.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-resizable-panels.browser.esm-Da3ksQXL.js">
+    <link rel="modulepreload" crossorigin href="./assets/utilities.esm-Di0IV3nO.js">
+    <link rel="modulepreload" crossorigin href="./assets/floating-outline-CMt2sk--.js">
+    <link rel="modulepreload" crossorigin href="./assets/useAddCell-DKJ0NHXX.js">
+    <link rel="modulepreload" crossorigin href="./assets/eye-off-AK_9uodG.js">
+    <link rel="modulepreload" crossorigin href="./assets/readonly-python-code-Co1fGZLh.js">
+    <link rel="modulepreload" crossorigin href="./assets/file-video-camera-C3wGzBnE.js">
+    <link rel="modulepreload" crossorigin href="./assets/types-Dv1-Phf0.js">
+    <link rel="modulepreload" crossorigin href="./assets/refresh-ccw-DN_xCV6A.js">
+    <link rel="modulepreload" crossorigin href="./assets/form-CEIWhPlm.js">
+    <link rel="modulepreload" crossorigin href="./assets/field-CySaBlkz.js">
+    <link rel="modulepreload" crossorigin href="./assets/useBoolean-Ck_unDZw.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDeepCompareMemoize-5OUgerQ3.js">
+    <link rel="modulepreload" crossorigin href="./assets/types-C1UhS3qM.js">
+    <link rel="modulepreload" crossorigin href="./assets/prop-types-DaaA-ptl.js">
+    <link rel="modulepreload" crossorigin href="./assets/es-BYgU_srD.js">
+    <link rel="modulepreload" crossorigin href="./assets/hasIn-CycJImp8.js">
+    <link rel="modulepreload" crossorigin href="./assets/_baseFlatten-CUZNxU8H.js">
+    <link rel="modulepreload" crossorigin href="./assets/flatten-D-7VEN0q.js">
+    <link rel="modulepreload" crossorigin href="./assets/pick-B_6Qi5aM.js">
+    <link rel="modulepreload" crossorigin href="./assets/code-xml-CgN_Yig7.js">
+    <link rel="modulepreload" crossorigin href="./assets/download-Dg7clfkc.js">
+    <link rel="modulepreload" crossorigin href="./assets/square-CuJ72M8f.js">
+    <link rel="modulepreload" crossorigin href="./assets/settings-OBbrbhij.js">
+    <link rel="modulepreload" crossorigin href="./assets/bundle.esm-i_UbZC0w.js">
+    <link rel="stylesheet" crossorigin href="./assets/cells-jmgGt1lS.css">
+    <link rel="stylesheet" crossorigin href="./assets/markdown-renderer-DdDKmWlR.css">
+    <link rel="stylesheet" crossorigin href="./assets/JsonOutput-B7vuddcd.css">
+    <link rel="stylesheet" crossorigin href="./assets/index-CeUwN_0i.css">
+  <marimo-wasm hidden=""></marimo-wasm>
+    <script>
+        if (window.location.protocol === 'file:') {
+            alert('Warning: This file must be served by an HTTP server to function correctly.');
+        }
+    </script>
+    
+    <style>
+        #save-button {
+            display: none !important;
+        }
+        #filename-input {
+            display: none !important;
+        }
+    </style>
+    <marimo-code hidden="">import%20marimo%0A%0A__generated_with%20%3D%20%220.19.11%22%0Aapp%20%3D%20marimo.App(width%3D%22medium%22)%0A%0A%0A%40app.cell%0Adef%20_()%3A%0A%20%20%20%20import%20marimo%20as%20mo%0A%20%20%20%20import%20pandas%20as%20pd%0A%20%20%20%20import%20altair%20as%20alt%0A%20%20%20%20%23%20Weitere%20Imports%20hier%20erg%C3%A4nzen%20(z.B.%20plotly)%0A%20%20%20%20return%20alt%2C%20mo%2C%20pd%0A%0A%0A%40app.cell%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%20%F0%9F%8C%B1%20%C3%96kobilanz-App%20f%C3%BCr%20Erneuerbare%20Energien%0A%0A%20%20%20%20**Entwickelt%20von%3A%20%5BGruppe%205%5D**%0A%0A%20%20%20%20Unsere%20App%20erm%C3%B6glicht%20es%20Nutzern%2C%20die%20CO%E2%82%82-Bilanz%20verschiedener%20erneuerbarer%20Energiequellen%20wie%20z.%20B.%20Solar-%2C%20Wind-%20und%20Wasserkraft%20zu%20berechnen%20und%20miteinander%20zu%20vergleichen.%20Ziel%20ist%20es%2C%20ein%20besseres%20Verst%C3%A4ndnis%20f%C3%BCr%20die%20Umweltwirkungen%20nachhaltiger%20Energieformen%20zu%20vermitteln.%0A%20%20%20%20Die%20App%20dient%20zudem%20der%20Analyse%20und%20anschaulichen%20Visualisierung%20der%20CO%E2%82%82-Bilanz%20erneuerbarer%20Energiesysteme.%20Durch%20die%20Eingabe%20verschiedener%20Parameter%20lassen%20sich%20Emissionen%2C%20Einsparpotenziale%20und%20Umweltwirkungen%20berechnen.%0A%0A%20%20%20%20---%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_()%3A%0A%20%20%20%20%23%20%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%0A%20%20%20%20%23%20DATEN%0A%20%20%20%20%23%20%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%0A%20%20%20%20%23%20Hier%20eure%20Daten%20einf%C3%BCgen%0A%20%20%20%20%23%20%0A%20%20%20%20%23%20Tipp%3A%20Recherchiert%20auf%20https%3A%2F%2Fwww.probas.umweltbundesamt.de%0A%20%20%20%20%23%20%0A%20%20%20%20%23%20Beispielstruktur%3A%0A%20%20%20%20%23%20energietraeger_daten%20%3D%20pd.DataFrame(%7B%0A%20%20%20%20%23%20%20%20%20%20%22Energietr%C3%A4ger%22%3A%20%5B%22Photovoltaik%22%2C%20%22Windkraft%22%2C%20...%5D%2C%0A%20%20%20%20%23%20%20%20%20%20%22CO2_eq_g_kWh%22%3A%20%5B40%2C%2010%2C%20...%5D%2C%0A%20%20%20%20%23%20%20%20%20%20...%0A%20%20%20%20%23%20%7D)%0A%0A%20%20%20%20%23%20TODO%3A%20Eure%20Daten%20hier%20einf%C3%BCgen%0A%20%20%20%20%23energietraeger_daten%20%3D%20pd.DataFrame(%7B%0A%20%20%20%20%23%20%20%20%20%22Energietr%C3%A4ger%22%3A%20%5B%22Beispiel%201%22%2C%20%22Beispiel%202%22%5D%2C%0A%20%20%20%20%23%20%20%20%20%22CO2_eq_g_kWh%22%3A%20%5B0%2C%200%5D%2C%0A%20%20%20%20%20%20%20%20%23%20Weitere%20Spalten%20erg%C3%A4nzen...%0A%20%20%20%20%23%7D)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(pd)%3A%0A%20%20%20%20%23%20Beispieldaten%20angelehnt%20an%20ProBas%2FGEMIS-Werte%0A%20%20%20%20%23%20Quelle%3A%20Typische%20Werte%20aus%20Lebenszyklusanalysen%0A%0A%20%20%20%20energietraeger_daten%20%3D%20pd.DataFrame(%7B%0A%20%20%20%20%20%20%20%20%22Energietr%C3%A4ger%22%3A%20%5B%0A%20%20%20%20%20%20%20%20%20%20%20%20%22Photovoltaik%20(Dach)%22%2C%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%22Photovoltaik%20(Freifl%C3%A4che)%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%22Windkraft%20(Onshore)%22%2C%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%22Windkraft%20(Offshore)%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%22Wasserkraft%20(Laufwasser)%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%22Biomasse%20(Holz-HKW)%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%22Biogas%20(landw.)%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%22Solarthermie%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%22Geothermie%22%0A%20%20%20%20%20%20%20%20%5D%2C%0A%20%20%20%20%20%20%20%20%22CO2_eq_g_kWh%22%3A%20%5B40%2C%2035%2C%2010%2C%2012%2C%204%2C%2030%2C%20170%2C%2025%2C%2038%5D%2C%20%20%23%20g%20CO2-eq%2FkWh%0A%20%20%20%20%20%20%20%20%22KEA_MJ_kWh%22%3A%20%5B0.45%2C%200.40%2C%200.08%2C%200.10%2C%200.02%2C%200.15%2C%200.85%2C%200.30%2C%200.42%5D%2C%20%20%23%20MJ%2FkWh%20kumulierter%20Energieaufwand%0A%20%20%20%20%20%20%20%20%22Flaechenbedarf_m2_kW%22%3A%20%5B7%2C%2020%2C%2030%2C%2015%2C%200.5%2C%20500%2C%20300%2C%203%2C%202%5D%2C%20%20%23%20m%C2%B2%2FkW%20installierte%20Leistung%0A%20%20%20%20%20%20%20%20%22Lebensdauer_Jahre%22%3A%20%5B25%2C%2025%2C%2020%2C%2025%2C%2080%2C%2020%2C%2015%2C%2020%2C%2030%5D%2C%0A%20%20%20%20%20%20%20%20%22Erntefaktor%22%3A%20%5B10%2C%2012%2C%2050%2C%2045%2C%20200%2C%208%2C%203%2C%2015%2C%2012%5D%2C%20%20%23%20Energy%20Return%20on%20Investment%0A%20%20%20%20%20%20%20%20%22Kategorie%22%3A%20%5B%0A%20%20%20%20%20%20%20%20%20%20%20%20%22Solar%22%2C%20%22Solar%22%2C%20%22Wind%22%2C%20%22Wind%22%2C%20%22Wasser%22%2C%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%22Biomasse%22%2C%20%22Biomasse%22%2C%20%22Solar%22%2C%20%22Geothermie%22%0A%20%20%20%20%20%20%20%20%5D%0A%20%20%20%20%7D)%0A%20%20%20%20energietraeger_daten%0A%20%20%20%20return%20(energietraeger_daten%2C)%0A%0A%0A%40app.cell%0Adef%20_(alt%2C%20energietraeger_daten)%3A%0A%20%20%20%20%23%20Diagramm%20erstellen%2C%20Code%20mit%20dataframe%20gui%20erstellt%0A%20%20%20%20_chart%20%3D%20(%0A%20%20%20%20%20%20%20%20alt.Chart(energietraeger_daten)%0A%20%20%20%20%20%20%20%20.mark_point()%0A%20%20%20%20%20%20%20%20.encode(%0A%20%20%20%20%20%20%20%20%20%20%20%20x%3Dalt.X(field%3D'Energietr%C3%A4ger'%2C%20type%3D'nominal')%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20y%3Dalt.Y(field%3D'CO2_eq_g_kWh'%2C%20type%3D'quantitative'%2C%20aggregate%3D'mean')%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20tooltip%3D%5B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20alt.Tooltip(field%3D'Energietr%C3%A4ger')%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20alt.Tooltip(field%3D'CO2_eq_g_kWh'%2C%20aggregate%3D'mean'%2C%20format%3D'%2C.0f')%0A%20%20%20%20%20%20%20%20%20%20%20%20%5D%0A%20%20%20%20%20%20%20%20)%0A%20%20%20%20%20%20%20%20.properties(%0A%20%20%20%20%20%20%20%20%20%20%20%20height%3D290%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20width%3D'container'%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20config%3D%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20'axis'%3A%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20'grid'%3A%20True%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20)%0A%20%20%20%20)%0A%20%20%20%20_chart%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(energietraeger_daten%2C%20mo)%3A%0A%20%20%20%20%23%20%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%0A%20%20%20%20%23%20BENUTZEROBERFL%C3%84CHE%20(UI)%0A%20%20%20%20%23%20%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%0A%20%20%20%20%23%20Hier%20interaktive%20Elemente%20erstellen%0A%20%20%20%20%23%0A%20%20%20%20%23%20Beispiele%3A%0A%20%20%20%20%23%20-%20Dropdown%3A%20mo.ui.dropdown(options%3D%5B...%5D%2C%20label%3D%22...%22)%0A%20%20%20%20%23%20-%20Slider%3A%20%20%20mo.ui.slider(start%3D0%2C%20stop%3D100%2C%20value%3D50%2C%20label%3D%22...%22)%0A%20%20%20%20%23%20-%20Checkbox%3A%20mo.ui.checkbox(label%3D%22...%22)%0A%20%20%20%20%23%0A%20%20%20%20%23%20Dokumentation%3A%20https%3A%2F%2Fdocs.marimo.io%2Fapi%2Finputs%2F%0A%0A%20%20%20%20%23%20TODO%3A%20Eure%20UI-Elemente%20hier%20erstellen%0A%0A%20%20%20%20%23%20Beispiel%20Dropdown%3A%0A%20%20%20%20energie_auswahl%20%3D%20mo.ui.dropdown(%0A%20%20%20%20%20%20%20%20options%3Denergietraeger_daten%5B%22Energietr%C3%A4ger%22%5D.tolist()%2C%0A%20%20%20%20%20%20%20%20value%3Denergietraeger_daten%5B%22Energietr%C3%A4ger%22%5D.iloc%5B0%5D%2C%0A%20%20%20%20%20%20%20%20label%3D%22Energietr%C3%A4ger%20ausw%C3%A4hlen%22%0A%20%20%20%20)%0A%0A%20%20%20%20%23%20Beispiel%20Slider%3A%0A%20%20%20%20leistung_slider%20%3D%20mo.ui.slider(start%3D1%2C%20stop%3D1000%2C%20value%3D100%2C%20label%3D%22Leistung%20(kW)%22)%0A%20%20%20%20return%20energie_auswahl%2C%20leistung_slider%0A%0A%0A%40app.cell%0Adef%20_(energie_auswahl%2C%20leistung_slider%2C%20mo)%3A%0A%20%20%20%20mo.md(f%22%22%22%0A%20%20%20%20%23%23%20%E2%9A%99%EF%B8%8F%20Parameter%20einstellen%0A%0A%20%20%20%20%7Bmo.hstack(%5Benergie_auswahl%2C%20leistung_slider%5D%2C%20justify%3D%22start%22%2C%20gap%3D2)%7D%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(energie_auswahl%2C%20energietraeger_daten%2C%20leistung_slider)%3A%0A%20%20%20%20%23%20%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%0A%20%20%20%20%23%20BERECHNUNGEN%0A%20%20%20%20%23%20%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%0A%20%20%20%20%23%20Hier%20die%20Berechnungen%20basierend%20auf%20der%20Auswahl%20durchf%C3%BChren%0A%20%20%20%20%23%0A%20%20%20%20%23%20Beispiel%3A%0A%20%20%20%20%23%20ausgewaehlter_traeger%20%3D%20energie_auswahl.value%0A%20%20%20%20%23%20daten%20%3D%20energietraeger_daten%5Benergietraeger_daten%5B%22Energietr%C3%A4ger%22%5D%20%3D%3D%20ausgewaehlter_traeger%5D%0A%20%20%20%20%23%20co2_wert%20%3D%20daten%5B%22CO2_eq_g_kWh%22%5D.iloc%5B0%5D%0A%0A%20%20%20%20%23%20TODO%3A%20Eure%20Berechnungen%20hier%0A%0A%20%20%20%20ausgewaehlter_traeger%20%3D%20energie_auswahl.value%0A%20%20%20%20leistung_kw%3Dleistung_slider.value%0A%20%20%20%20jahresertrag_kwh%20%3D%20leistung_kw%20*%201100%20%231000%20nur%20als%20Beispiel%0A%0A%20%20%20%20%23%20Beispiel%3A%20Daten%20f%C3%BCr%20ausgew%C3%A4hlten%20Tr%C3%A4ger%20holen%0A%20%20%20%20daten%20%3D%20energietraeger_daten%5B%0A%20%20%20%20%20%20%20%20energietraeger_daten%5B%22Energietr%C3%A4ger%22%5D%20%3D%3D%20ausgewaehlter_traeger%0A%20%20%20%20%5D.iloc%5B0%5D%0A%20%20%20%20return%20ausgewaehlter_traeger%2C%20jahresertrag_kwh%2C%20leistung_kw%0A%0A%0A%40app.cell%0Adef%20_(ausgewaehlter_traeger%2C%20jahresertrag_kwh%2C%20leistung_kw%2C%20mo)%3A%0A%20%20%20%20mo.md(f%22%22%22%0A%20%20%20%20%23%23%20%F0%9F%93%8A%20Ergebnisse%20f%C3%BCr%20%7Bausgewaehlter_traeger%7D%0A%0A%20%20%20%20%23%23%23%20Energieertrag%0A%20%20%20%20%7C%20Kennzahl%20%7C%20Wert%20%7C%0A%20%20%20%20%7C----------%7C------%7C%0A%20%20%20%20%7C%20Installierte%20Leistung%20%7C%20**%7Bleistung_kw%3A%2C.0f%7D%20kW**%20%7C%0A%20%20%20%20%7C%20Jahresertrag%20%7C%20**%7Bjahresertrag_kwh%3A%2C.0f%7D%20kWh%2Fa**%20%7C%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_()%3A%0A%20%20%20%20%23%20%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%0A%20%20%20%20%23%20VISUALISIERUNG%0A%20%20%20%20%23%20%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%0A%20%20%20%20%23%20Hier%20Diagramme%20erstellen%0A%20%20%20%20%23%0A%20%20%20%20%23%20M%C3%B6glichkeiten%3A%0A%20%20%20%20%23%20-%20plotly%3A%20Interaktive%20Diagramme%20(empfohlen)%0A%20%20%20%20%23%20%20%20import%20plotly.express%20as%20px%0A%20%20%20%20%23%20%20%20fig%20%3D%20px.bar(df%2C%20x%3D%22...%22%2C%20y%3D%22...%22)%0A%20%20%20%20%23%20%20%20mo.ui.plotly(fig)%0A%20%20%20%20%23%0A%20%20%20%20%23%20-%20matplotlib%3A%20Statische%20Diagramme%0A%20%20%20%20%23%20%20%20import%20matplotlib.pyplot%20as%20plt%0A%20%20%20%20%23%20%20%20plt.bar(...)%0A%20%20%20%20%23%20%20%20plt.gcf()%0A%20%20%20%20%23%0A%20%20%20%20%23%20Dokumentation%3A%20https%3A%2F%2Fdocs.marimo.io%2Fapi%2Fplotting%2F%0A%0A%20%20%20%20%23%20TODO%3A%20Eure%20Visualisierungen%20hier%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20---%0A%0A%20%20%20%20%23%23%20%E2%84%B9%EF%B8%8F%20Hinweise%0A%0A%20%20%20%20**Datenquellen%3A**%0A%0A%20%20%20%20Bundesnetzagentur%20(BNetzA)%0A%20%20%20%20%E2%86%92%20Offizielle%20Stromerzeugung%20nach%20Energiequellen%0A%0A%20%20%20%20SMARD.de%20(Plattform%20der%20Bundesnetzagentur)%0A%20%20%20%20%E2%86%92%20Sehr%20verbreitet%20f%C3%BCr%20kWh%2FMWh%20Daten%20(Solar%2C%20Wind%2C%20Wasser%20etc.)%0A%0A%20%20%20%20Methodik%3A%0A%20%20%20%20In%20diesem%20Projekt%20wurde%20eine%20interaktive%20Anwendung%20entwickelt%2C%20um%20den%20CO%E2%82%82-Aussto%C3%9F%20und%20die%20Stromkosten%20unterschiedlicher%20Energiequellen%20zu%20berechnen.%20Die%20Methodik%20umfasst%20folgende%20Schritte%3A%0A%0A%20%20%20%20Auswahl%20der%20Energiequellen%3A%0A%20%20%20%20Der%20Nutzer%20kann%20zwischen%20Solarenergie%2C%20Windenergie%20und%20Wasserkraft%20w%C3%A4hlen.%20Jede%20Energiequelle%20ist%20mit%20spezifischen%20CO%E2%82%82-Faktoren%20und%20Strompreisen%20verkn%C3%BCpft%2C%20die%20auf%20realen%20Durchschnittswerten%20basieren.%0A%0A%20%20%20%20Eingabe%20des%20Energieverbrauchs%3A%0A%20%20%20%20Der%20Nutzer%20gibt%20die%20Menge%20an%20Stromverbrauch%20in%20Kilowattstunden%20(kWh)%20ein%2C%20f%C3%BCr%20die%20die%20Berechnung%20durchgef%C3%BChrt%20werden%20soll.%0A%0A%20%20%20%20Berechnung%20des%20CO%E2%82%82-Aussto%C3%9Fes%3A%0A%20%20%20%20F%C3%BCr%20die%20gew%C3%A4hlte%20Energiequelle%20wird%20der%20CO%E2%82%82-Aussto%C3%9F%20in%20kg%20berechnet.%20Zus%C3%A4tzlich%20wird%20der%20CO%E2%82%82-Aussto%C3%9F%20eines%20durchschnittlichen%20Strommixes%20als%20Referenzwert%20berechnet%2C%20um%20die%20Einsparung%20zu%20ermitteln.%0A%0A%20%20%20%20Berechnung%20der%20Stromkosten%3A%0A%20%20%20%20Auf%20Basis%20der%20kWh%20und%20des%20spezifischen%20Strompreises%20der%20gew%C3%A4hlten%20Energiequelle%20werden%20die%20Kosten%20berechnet.%20Au%C3%9Ferdem%20wird%20die%20Ersparnis%20gegen%C3%BCber%20dem%20durchschnittlichen%20Strommix%20dargestellt.%0A%0A%20%20%20%20Darstellung%20der%20Ergebnisse%3A%0A%20%20%20%20Die%20Ergebnisse%20werden%20in%20einer%20%C3%BCbersichtlichen%2C%20interaktiven%20Benutzeroberfl%C3%A4che%20angezeigt.%20Sowohl%20CO%E2%82%82-Werte%20als%20auch%20Kosten%20und%20Einsparungen%20werden%20klar%20und%20verst%C3%A4ndlich%20pr%C3%A4sentiert.%0A%0A%20%20%20%20Reaktivit%C3%A4t%20der%20App%3A%0A%20%20%20%20Die%20Anwendung%20ist%20so%20programmiert%2C%20dass%20%C3%84nderungen%20an%20den%20Eingabewerten%20sofort%20aktualisierte%20Ergebnisse%20liefern%2C%20ohne%20dass%20die%20Anwendung%20neu%20gestartet%20werden%20muss.%0A%0A%20%20%20%20---%0A%0A%20%20%20%20*Entwickelt%20f%C3%BCr%20die%20Fachschule%20f%C3%BCr%20Umweltschutztechnik*%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(pd)%3A%0A%20%20%20%20energiedaten%20%3D%20pd.DataFrame(%7B%0A%20%20%20%20%20%20%20%20%22Energietr%C3%A4ger%22%3A%20%5B%0A%20%20%20%20%20%20%20%20%20%20%20%20%22Solar%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%22Wind%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%22Wasserkraft%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%22Strommix%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%22Biogas%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%22Solarthermie%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%22Erdgas%22%0A%20%20%20%20%20%20%20%20%5D%2C%0A%20%20%20%20%20%20%20%20%22CO2_kg_kWh%22%3A%20%5B0.041%2C%200.011%2C%200.013%2C%200.380%2C%200.180%2C%200.025%2C%200.490%5D%2C%0A%20%20%20%20%20%20%20%20%22KEA_MJ_kWh%22%3A%20%5B0.40%2C%200.08%2C%200.02%2C%203.50%2C%200.85%2C%200.30%2C%202.50%5D%2C%0A%20%20%20%20%20%20%20%20%22Flaechenbedarf_m2_kW%22%3A%20%5B10%2C%2030%2C%200.5%2C%201%2C%20300%2C%203%2C%201%5D%2C%0A%20%20%20%20%20%20%20%20%22Lebensdauer_Jahre%22%3A%20%5B25%2C%2020%2C%2080%2C%2040%2C%2015%2C%2020%2C%2030%5D%2C%0A%20%20%20%20%20%20%20%20%22Erntefaktor%22%3A%20%5B12%2C%2050%2C%20200%2C%208%2C%203%2C%2015%2C%2010%5D%0A%20%20%20%20%7D)%0A%0A%20%20%20%20energiedaten%0A%20%20%20%20return%20(energiedaten%2C)%0A%0A%0A%40app.cell%0Adef%20_(mo)%3A%0A%20%20%20%20energiequelle%20%3D%20mo.ui.dropdown(%0A%20%20%20%20%20%20%20%20options%3D%5B%22Solar%22%2C%20%22Wind%22%2C%20%22Wasserkraft%22%2C%20%22Strommix%22%2C%20%22Biogas%22%2C%20%22Solarthermie%22%2C%20%22Erdgas%22%5D%2C%0A%20%20%20%20%20%20%20%20label%3D%22Energiequelle%22%0A%20%20%20%20)%0A%0A%20%20%20%20kwh%20%3D%20mo.ui.number(%0A%20%20%20%20%20%20%20%20label%3D%22Energie%20in%20kWh%22%2C%0A%20%20%20%20%20%20%20%20value%3D1000%0A%20%20%20%20)%0A%20%20%20%20kosten%20%3D%20mo.ui.number(%0A%20%20%20%20%20%20%20%20label%3D%22Kosten%20pro%20kWh%20(%E2%82%AC)%22%2C%0A%20%20%20%20%20%20%20%20value%3D0.30%0A%20%20%20%20)%0A%20%20%20%20kosten%20%3D%20mo.ui.slider(%0A%20%20%20%20%20%20%20%20start%3D0.05%2C%0A%20%20%20%20%20%20%20%20stop%3D0.60%2C%0A%20%20%20%20%20%20%20%20step%3D0.01%2C%0A%20%20%20%20%20%20%20%20value%3D0.30%2C%0A%20%20%20%20%20%20%20%20label%3D%22%F0%9F%92%B6%20Strommix%20Kosten%20(%E2%82%AC%2FkWh)%22%0A%20%20%20%20)%0A%0A%20%20%20%20mo.vstack(%5Benergiequelle%2C%20kwh%2C%20kosten%5D)%0A%20%20%20%20return%20energiequelle%2C%20kosten%2C%20kwh%0A%0A%0A%40app.cell%0Adef%20_(energiequelle%2C%20kosten%2C%20kwh%2C%20mo)%3A%0A%20%20%20%20co2_faktoren%20%3D%20%7B%0A%20%20%20%20%20%20%20%20%22Solar%22%3A%200.041%2C%0A%20%20%20%20%20%20%20%20%22Wind%22%3A%200.011%2C%0A%20%20%20%20%20%20%20%20%22Wasserkraft%22%3A%200.013%2C%0A%20%20%20%20%20%20%20%20%22Strommix%22%20%3A%200.380%2C%0A%20%20%20%20%20%20%20%20%22Biogas%22%3A%200.180%2C%0A%20%20%20%20%20%20%20%20%22Solarthermie%22%3A%200.025%2C%0A%20%20%20%20%20%20%20%20%22Erdgas%22%3A%200.49%0A%20%20%20%20%7D%0A%20%20%20%20kosten_faktoren%20%3D%20%7B%0A%20%20%20%20%20%20%20%20%22Solar%22%3A%200.10%2C%0A%20%20%20%20%20%20%20%20%22Wind%22%3A%200.08%2C%0A%20%20%20%20%20%20%20%20%22Wasserkraft%22%3A%200.07%2C%0A%20%20%20%20%20%20%20%20%22Strommix%22%3A%200.40%2C%0A%20%20%20%20%20%20%20%20%22Biogas%22%3A%200.12%2C%0A%20%20%20%20%20%20%20%20%22Solarthermie%22%3A%200.09%2C%0A%20%20%20%20%20%20%20%20%22Erdgas%22%3A%200.15%0A%20%20%20%20%7D%0A%20%20%20%20def%20ergebnis()%3A%0A%20%20%20%20%20%20%20%20if%20energiequelle.value%20is%20None%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20mo.md(%22%E2%9A%A0%EF%B8%8F%20Bitte%20Energiequelle%20ausw%C3%A4hlen.%22)%0A%0A%20%20%20%20%20%20%20%20kosten_faktoren%5B%22Strommix%22%5D%20%3D%20kosten.value%0A%0A%20%20%20%20%20%20%20%20co2_erneuerbar%20%3D%20kwh.value%20*%20co2_faktoren%5Benergiequelle.value%5D%0A%20%20%20%20%20%20%20%20co2_strommix%20%3D%20kwh.value%20*%20co2_faktoren%5B%22Strommix%22%5D%0A%20%20%20%20%20%20%20%20einsparung_co2%20%3D%20co2_strommix%20-%20co2_erneuerbar%0A%0A%20%20%20%20%20%20%20%20kosten_erneuerbar%20%3D%20kwh.value%20*%20kosten_faktoren%5Benergiequelle.value%5D%0A%20%20%20%20%20%20%20%20kosten_strommix%20%3D%20kwh.value%20*%20kosten_faktoren%5B%22Strommix%22%5D%0A%20%20%20%20%20%20%20%20einsparung_kosten%20%3D%20kosten_strommix%20-%20kosten_erneuerbar%0A%0A%20%20%20%20%20%20%20%20return%20mo.md(f%22%22%22%0A%20%20%20%20%23%23%20Ergebnisse%20fuer%20%7Benergiequelle.value%7D%0A%0A%20%20%20%20%23%23%23%20CO2%0A%20%20%20%20-%20CO2%20(%7Benergiequelle.value%7D)%3A%20**%7Bco2_erneuerbar%3A.1f%7D%20kg**%0A%20%20%20%20-%20CO2%20(Strommix)%3A%20**%7Bco2_strommix%3A.1f%7D%20kg**%0A%20%20%20%20-%20Einsparung%3A%20**%7Beinsparung_co2%3A.1f%7D%20kg%20CO2**%0A%0A%20%20%20%20%23%23%23%20Kosten%0A%20%20%20%20-%20Strommix%20Preis%3A%20**%7Bkosten.value%3A.2f%7D%20EUR%2FkWh**%0A%20%20%20%20-%20Gesamtkosten%20(%7Benergiequelle.value%7D)%3A%20**%7Bkosten_erneuerbar%3A.2f%7D%20EUR**%0A%20%20%20%20-%20Gesamtkosten%20(Strommix)%3A%20**%7Bkosten_strommix%3A.2f%7D%20EUR**%0A%20%20%20%20-%20Kosteneinsparung%3A%20**%7Beinsparung_kosten%3A.2f%7D%20EUR**%0A%20%20%20%20%22%22%22)%0A%0A%20%20%20%20ergebnis()%0A%20%20%20%20ergebnis()%0A%20%20%20%20return%20co2_faktoren%2C%20kosten_faktoren%0A%0A%0A%40app.cell%0Adef%20_(alt%2C%20co2_faktoren%2C%20energiequelle%2C%20kwh%2C%20mo%2C%20pd)%3A%0A%20%20%20%20def%20co2_plot()%3A%0A%20%20%20%20%20%20%20%20if%20energiequelle.value%20is%20None%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20mo.md(%22%E2%9A%A0%EF%B8%8F%20Bitte%20Energiequelle%20ausw%C3%A4hlen.%22)%0A%0A%20%20%20%20%20%20%20%20co2_erneuerbar%20%3D%20kwh.value%20*%20co2_faktoren%5Benergiequelle.value%5D%0A%20%20%20%20%20%20%20%20co2_strommix%20%3D%20kwh.value%20*%20co2_faktoren%5B%22Strommix%22%5D%0A%0A%20%20%20%20%20%20%20%20df%20%3D%20pd.DataFrame(%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%22Quelle%22%3A%20%5B%22Erneuerbar%22%2C%20%22Strommix%22%5D%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%22CO2%22%3A%20%5Bco2_erneuerbar%2C%20co2_strommix%5D%0A%20%20%20%20%20%20%20%20%7D)%0A%0A%20%20%20%20%20%20%20%20return%20alt.Chart(df).mark_bar().encode(%0A%20%20%20%20%20%20%20%20%20%20%20%20x%3Dalt.X(%22Quelle%22%2C%20title%3D%22Energiequelle%22)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20y%3Dalt.Y(%22CO2%22%2C%20title%3D%22CO%E2%82%82-Emissionen%20(kg)%22)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20color%3D%22Quelle%22%0A%20%20%20%20%20%20%20%20)%0A%0A%20%20%20%20co2_plot()%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(alt%2C%20co2_faktoren%2C%20energiequelle%2C%20kwh%2C%20mo%2C%20pd)%3A%0A%20%20%20%20def%20co2_pie_plot()%3A%0A%20%20%20%20%20%20%20%20if%20energiequelle.value%20is%20None%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20mo.md(%22%E2%9A%A0%EF%B8%8F%20Bitte%20Energiequelle%20ausw%C3%A4hlen.%22)%0A%0A%20%20%20%20%20%20%20%20co2_erneuerbar%20%3D%20kwh.value%20*%20co2_faktoren%5Benergiequelle.value%5D%0A%20%20%20%20%20%20%20%20co2_strommix%20%3D%20kwh.value%20*%20co2_faktoren%5B%22Strommix%22%5D%0A%20%20%20%20%20%20%20%20gesamt%20%3D%20co2_erneuerbar%20%2B%20co2_strommix%0A%0A%20%20%20%20%20%20%20%20df%20%3D%20pd.DataFrame(%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%22Quelle%22%3A%20%5Benergiequelle.value%2C%20%22Strommix%22%5D%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%22CO2%22%3A%20%5Bco2_erneuerbar%2C%20co2_strommix%5D%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%22Prozent%22%3A%20%5B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20round(co2_erneuerbar%20%2F%20gesamt%20*%20100%2C%201)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20round(co2_strommix%20%2F%20gesamt%20*%20100%2C%201)%0A%20%20%20%20%20%20%20%20%20%20%20%20%5D%0A%20%20%20%20%20%20%20%20%7D)%0A%0A%20%20%20%20%20%20%20%20base%20%3D%20alt.Chart(df)%0A%0A%20%20%20%20%20%20%20%20pie%20%3D%20base.mark_arc(outerRadius%3D120).encode(%0A%20%20%20%20%20%20%20%20%20%20%20%20theta%3Dalt.Theta(%22CO2%3AQ%22)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20color%3Dalt.Color(%22Quelle%3AN%22%2C%20title%3D%22Energiequelle%22)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20tooltip%3D%5B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%22Quelle%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20alt.Tooltip(%22CO2%3AQ%22%2C%20title%3D%22CO%E2%82%82%20(kg)%22%2C%20format%3D%22.2f%22)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20alt.Tooltip(%22Prozent%3AQ%22%2C%20title%3D%22Anteil%20(%25)%22)%0A%20%20%20%20%20%20%20%20%20%20%20%20%5D%0A%20%20%20%20%20%20%20%20)%0A%0A%20%20%20%20%20%20%20%20text%20%3D%20base.mark_text(radius%3D150%2C%20size%3D14).encode(%0A%20%20%20%20%20%20%20%20%20%20%20%20theta%3Dalt.Theta(%22CO2%3AQ%22%2C%20stack%3DTrue)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20text%3Dalt.Text(%22Prozent%3AQ%22%2C%20format%3D%22.1f%22)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20color%3Dalt.Color(%22Quelle%3AN%22)%0A%20%20%20%20%20%20%20%20)%0A%0A%20%20%20%20%20%20%20%20return%20(pie%20%2B%20text).properties(title%3D%22CO%E2%82%82-Emissionen%20im%20Vergleich%22)%0A%0A%20%20%20%20co2_pie_plot()%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(alt%2C%20energiequelle%2C%20kosten_faktoren%2C%20kwh%2C%20mo%2C%20pd)%3A%0A%20%20%20%20def%20kosten_pie_plot_v2()%3A%0A%20%20%20%20%20%20%20%20if%20energiequelle.value%20is%20None%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20mo.md(%22%E2%9A%A0%EF%B8%8F%20Bitte%20Energiequelle%20ausw%C3%A4hlen.%22)%0A%0A%20%20%20%20%20%20%20%20kosten_erneuerbar%20%3D%20kwh.value%20*%20kosten_faktoren%5Benergiequelle.value%5D%0A%20%20%20%20%20%20%20%20kosten_strommix%20%3D%20kwh.value%20*%20kosten_faktoren%5B%22Strommix%22%5D%0A%20%20%20%20%20%20%20%20gesamt%20%3D%20kosten_erneuerbar%20%2B%20kosten_strommix%0A%0A%20%20%20%20%20%20%20%20df%20%3D%20pd.DataFrame(%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%22Quelle%22%3A%20%5Benergiequelle.value%2C%20%22Strommix%22%5D%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%22Kosten%22%3A%20%5Bkosten_erneuerbar%2C%20kosten_strommix%5D%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%22Prozent%22%3A%20%5B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20round(kosten_erneuerbar%20%2F%20gesamt%20*%20100%2C%201)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20round(kosten_strommix%20%2F%20gesamt%20*%20100%2C%201)%0A%20%20%20%20%20%20%20%20%20%20%20%20%5D%0A%20%20%20%20%20%20%20%20%7D)%0A%0A%20%20%20%20%20%20%20%20base%20%3D%20alt.Chart(df)%0A%0A%20%20%20%20%20%20%20%20pie%20%3D%20base.mark_arc(outerRadius%3D120).encode(%0A%20%20%20%20%20%20%20%20%20%20%20%20theta%3Dalt.Theta(%22Kosten%3AQ%22)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20color%3Dalt.Color(%22Quelle%3AN%22%2C%20title%3D%22Energiequelle%22)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20tooltip%3D%5B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%22Quelle%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20alt.Tooltip(%22Kosten%3AQ%22%2C%20title%3D%22Kosten%20(%E2%82%AC)%22%2C%20format%3D%22.2f%22)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20alt.Tooltip(%22Prozent%3AQ%22%2C%20title%3D%22Anteil%20(%25)%22)%0A%20%20%20%20%20%20%20%20%20%20%20%20%5D%0A%20%20%20%20%20%20%20%20)%0A%0A%20%20%20%20%20%20%20%20text%20%3D%20base.mark_text(radius%3D150%2C%20size%3D14).encode(%0A%20%20%20%20%20%20%20%20%20%20%20%20theta%3Dalt.Theta(%22Kosten%3AQ%22%2C%20stack%3DTrue)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20text%3Dalt.Text(%22Prozent%3AQ%22%2C%20format%3D%22.1f%22)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20color%3Dalt.Color(%22Quelle%3AN%22)%0A%20%20%20%20%20%20%20%20)%0A%0A%20%20%20%20%20%20%20%20return%20(pie%20%2B%20text).properties(title%3D%22Kosten%20im%20Vergleich%22)%0A%0A%20%20%20%20kosten_pie_plot_v2()%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(energiedaten%2C%20mo)%3A%0A%20%20%20%20%23%20%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%0A%20%20%20%20%23%20BENUTZEROBERFL%C3%84CHE%20(UI)%0A%20%20%20%20%23%20%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%3D%0A%0A%20%20%20%20ui_energie%20%3D%20mo.ui.dropdown(%0A%20%20%20%20%20%20%20%20options%3Denergiedaten%5B%22Energietr%C3%A4ger%22%5D.tolist()%2C%0A%20%20%20%20%20%20%20%20value%3Denergiedaten%5B%22Energietr%C3%A4ger%22%5D.iloc%5B0%5D%2C%0A%20%20%20%20%20%20%20%20label%3D%22%E2%9A%A1%20Energiequelle%20ausw%C3%A4hlen%22%0A%20%20%20%20)%0A%0A%20%20%20%20ui_kwh%20%3D%20mo.ui.slider(%0A%20%20%20%20%20%20%20%20start%3D100%2C%0A%20%20%20%20%20%20%20%20stop%3D100000%2C%0A%20%20%20%20%20%20%20%20step%3D100%2C%0A%20%20%20%20%20%20%20%20value%3D1000%2C%0A%20%20%20%20%20%20%20%20label%3D%22%F0%9F%94%8B%20Energieverbrauch%20(kWh)%22%0A%20%20%20%20)%0A%0A%20%20%20%20ui_leistung%20%3D%20mo.ui.slider(%0A%20%20%20%20%20%20%20%20start%3D1%2C%0A%20%20%20%20%20%20%20%20stop%3D1000%2C%0A%20%20%20%20%20%20%20%20step%3D1%2C%0A%20%20%20%20%20%20%20%20value%3D100%2C%0A%20%20%20%20%20%20%20%20label%3D%22%E2%9A%99%EF%B8%8F%20Leistung%20(kW)%22%0A%20%20%20%20)%0A%0A%20%20%20%20mo.vstack(%5B%0A%20%20%20%20%20%20%20%20mo.md(%22%23%23%20%F0%9F%8C%B1%20Energievergleich%20Rechner%22)%2C%0A%20%20%20%20%20%20%20%20mo.md(%22%23%23%23%20Einstellungen%22)%2C%0A%20%20%20%20%20%20%20%20ui_energie%2C%0A%20%20%20%20%20%20%20%20ui_kwh%2C%0A%20%20%20%20%20%20%20%20ui_leistung%2C%0A%20%20%20%20%5D)%0A%20%20%20%20return%20ui_energie%2C%20ui_kwh%2C%20ui_leistung%0A%0A%0A%40app.cell%0Adef%20_(%0A%20%20%20%20co2_faktoren%2C%0A%20%20%20%20energiedaten%2C%0A%20%20%20%20energiequelle%2C%0A%20%20%20%20kosten%2C%0A%20%20%20%20kosten_faktoren%2C%0A%20%20%20%20mo%2C%0A%20%20%20%20ui_energie%2C%0A%20%20%20%20ui_kwh%2C%0A%20%20%20%20ui_leistung%2C%0A)%3A%0A%20%20%20%20def%20ergebnis_v2()%3A%0A%20%20%20%20%20%20%20%20if%20ui_energie.value%20is%20None%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20mo.md(%22%E2%9A%A0%EF%B8%8F%20Bitte%20Energiequelle%20ausw%C3%A4hlen.%22)%0A%0A%20%20%20%20%20%20%20%20co2_erneuerbar%20%3D%20ui_kwh.value%20*%20co2_faktoren%5Bui_energie.value%5D%0A%20%20%20%20%20%20%20%20co2_strommix%20%3D%20ui_kwh.value%20*%20co2_faktoren%5B%22Strommix%22%5D%0A%20%20%20%20%20%20%20%20einsparung_co2%20%3D%20co2_strommix%20-%20co2_erneuerbar%0A%0A%20%20%20%20%20%20%20%20kosten_erneuerbar%20%3D%20ui_kwh.value%20*%20kosten_faktoren%5Bui_energie.value%5D%0A%20%20%20%20%20%20%20%20kosten_strommix%20%3D%20ui_kwh.value%20*%20kosten_faktoren%5B%22Strommix%22%5D%0A%20%20%20%20%20%20%20%20einsparung_kosten%20%3D%20kosten_strommix%20-%20kosten_erneuerbar%0A%0A%20%20%20%20%20%20%20%20row%20%3D%20energiedaten%5Benergiedaten%5B%22Energietr%C3%A4ger%22%5D%20%3D%3D%20ui_energie.value%5D.iloc%5B0%5D%0A%0A%20%20%20%20%20%20%20%20return%20mo.md(f%22%22%22%0A%20%20%20%20%23%23%20%F0%9F%93%8A%20Ergebnisse%20f%C3%BCr%20**%7Bui_energie.value%7D**%0A%0A%20%20%20%20%23%23%23%20%E2%9A%A1%20Anlage%0A%20%20%20%20-%20Leistung%3A%20**%7Bui_leistung.value%7D%20kW**%0A%20%20%20%20-%20Lebensdauer%3A%20**%7Brow%5B'Lebensdauer_Jahre'%5D%7D%20Jahre**%0A%20%20%20%20-%20Erntefaktor%3A%20**%7Brow%5B'Erntefaktor'%5D%7D**%0A%20%20%20%20-%20Fl%C3%A4chenbedarf%3A%20**%7Brow%5B'Flaechenbedarf_m2_kW'%5D%20*%20ui_leistung.value%3A.1f%7D%20m%C2%B2**%0A%0A%20%20%20%20%23%23%23%20%F0%9F%8C%BF%20CO%E2%82%82%0A%20%20%20%20-%20CO%E2%82%82%20(%7Bui_energie.value%7D)%3A%20**%7Bco2_erneuerbar%3A.1f%7D%20kg**%0A%20%20%20%20-%20CO%E2%82%82%20(Strommix)%3A%20**%7Bco2_strommix%3A.1f%7D%20kg**%0A%20%20%20%20-%20Einsparung%3A%20**%7Beinsparung_co2%3A.1f%7D%20kg%20CO%E2%82%82**%0A%0A%20%20%20%20%23%23%23%20Kosten%0A%20%20%20%20-%20Strommix%20Preis%3A%20**%7Bkosten.value%3A.2f%7D%20EUR%2FkWh**%0A%20%20%20%20-%20Gesamtkosten%20(%7Benergiequelle.value%7D)%3A%20**%7Bkosten_erneuerbar%3A.2f%7D%20EUR**%0A%20%20%20%20-%20Gesamtkosten%20(Strommix)%3A%20**%7Bkosten_strommix%3A.2f%7D%20EUR**%0A%20%20%20%20-%20Kosteneinsparung%3A%20**%7Beinsparung_kosten%3A.2f%7D%20EUR**%0A%20%20%20%20%22%22%22)%0A%0A%20%20%20%20ergebnis_v2()%0A%20%20%20%20return%0A%0A%0Aif%20__name__%20%3D%3D%20%22__main__%22%3A%0A%20%20%20%20app.run()%0A</marimo-code></head>
+  <body>
+    <div id="root"></div>
+    <!-- This is a portal for the data editor to render in -->
+    <div id="portal" data-testid="glide-portal" style="position: fixed; left: 0; top: 0; z-index: 9999"></div>
+    <script data-marimo="true">
+      window.__MARIMO_MOUNT_CONFIG__ = {
+            "filename": "notebook.py",
+            "mode": "read",
+            "version": "0.19.11",
+            "serverToken": "unused",
+            "config": {"ai": {"custom_providers": {}, "models": {"custom_models": [], "displayed_models": []}}, "completion": {"activate_on_typing": true, "copilot": false, "signature_hint_on_typing": false}, "diagnostics": {"sql_linter": true}, "display": {"cell_output": "below", "code_editor_font_size": 14, "dataframes": "rich", "default_table_max_columns": 50, "default_table_page_size": 10, "default_width": "medium", "reference_highlighting": false, "theme": "light"}, "formatting": {"line_length": 79}, "keymap": {"overrides": {}, "preset": "default"}, "language_servers": {"pylsp": {"enable_flake8": false, "enable_mypy": true, "enable_pydocstyle": false, "enable_pyflakes": false, "enable_pylint": false, "enable_ruff": true, "enabled": false}}, "mcp": {"mcpServers": {}, "presets": []}, "package_management": {"manager": "pip"}, "runtime": {"auto_instantiate": false, "auto_reload": "off", "default_csv_encoding": "utf-8", "default_sql_output": "auto", "on_cell_change": "autorun", "output_max_bytes": 8000000, "reactive_tests": true, "std_stream_max_bytes": 1000000, "watcher_on_save": "lazy"}, "save": {"autosave": "off", "autosave_delay": 1000, "format_on_save": false}, "server": {"browser": "default", "follow_symlink": false}, "snippets": {"custom_paths": [], "include_default_snippets": true}},
+            "configOverrides": {},
+            "appConfig": {"sql_output": "auto", "width": "medium"},
+            "view": {"showAppCode": false},
+            "notebook": null,
+            "session": null,
+            "runtimeConfig": null,
+        };
+    </script>
+  </body>
+</html>
